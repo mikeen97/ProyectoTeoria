@@ -31,14 +31,6 @@ public class Grafo {
     public void setConexiones(Conexiones conexiones) {
         this.conexiones.add(conexiones);
     }
-    public Conexiones c_pop(){
-        if(conexiones.size()>0){
-            Conexiones c=conexiones.get(0);
-            conexiones.remove(0);
-            return c;
-        }else{
-            return null;
-        }
-    }
+  
     
 }

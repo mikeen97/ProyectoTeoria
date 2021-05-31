@@ -21,16 +21,6 @@ public class Gnode extends javax.swing.JPanel {
     public int x11;
     public int y11;
 
-    public Arista a_pop() {
-        if (destinos.size() > 0) {
-            Arista u = destinos.get(0);
-            destinos.remove(0);
-            return u;
-        } else {
-            return null;
-        }
-    }
-
     public Gnode(JPanel contenedor, int x1, int y1, char node) {
         this.x11=x1;
         this.y11=y1;
@@ -128,27 +118,10 @@ public class Gnode extends javax.swing.JPanel {
             lasty = this.getY();
         }
     }//GEN-LAST:event_formMouseDragged
-
     boolean mover;
     int x, y;
     private int lasty = 50;
-    private int lastx = 50;
-
-    public int getLasty() {
-        return lasty;
-    }
-
-    public void setLasty(int lasty) {
-        this.lasty = lasty;
-    }
-
-    public int getLastx() {
-        return lastx;
-    }
-
-    public void setLastx(int lastx) {
-        this.lastx = lastx;
-    }
+    private int lastx = 50;    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_node;

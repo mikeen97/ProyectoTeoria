@@ -69,6 +69,12 @@ public class Principal extends javax.swing.JFrame {
         pn_grafo = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         expansion_minima.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -265,7 +271,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton7.setText("DIBUJAR GRAFO");
+        jButton7.setText("EMPEZAR A DIBUJAR GRAFO");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -275,18 +281,48 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Proyecto de Teoria de la Computacion");
 
+        jLabel2.setText("Proyecto 1 de la clase Teoria de la Computacion en mayo del 2021");
+
+        jLabel4.setText("Hecho por Miguel Angel Flores Ramos 11551106");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("INSTRUCCIONES");
+
+        jLabel5.setText("1. Hacer click en la parte negra donde decia crear un punto V");
+
+        jLabel6.setText("2. Parte izquierda esta para hacer un E entre dos V");
+
+        jLabel7.setText("3. Parte izquierda hay opciones para realizar con el G dibujado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(191, 191, 191))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(277, 277, 277))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(117, 117, 117)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -294,9 +330,21 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(127, 127, 127)
-                .addComponent(jButton7)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -314,22 +362,26 @@ public class Principal extends javax.swing.JFrame {
     private void pn_grafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_grafoMouseClicked
         String nombre = " ";
         nombre = JOptionPane.showInputDialog(pn_grafo, "Nodo: ");
-        boolean add = true;
-        //Verifico que el nodo no este duplicado
-        for (Gnode u : graph.getNodes()) {
-            if (u.getNombre() == nombre.charAt(0)) {
-                add = false;
-            }
-        }
-        if (add) {
-            graph.setNodes(new Gnode(pn_grafo, evt.getX(), evt.getY(), nombre.charAt(0)));
+        if (nombre.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(pn_grafo, "Debe ingresar un valor");
         } else {
-            JOptionPane.showMessageDialog(pn_grafo, "Nodo Duplicado!");
-        }
-        System.out.println("Se agrego nodo en: " + evt.getX() + " " + evt.getY());
+            boolean add = true;
+            //Verifico que el nodo no este duplicado
+            for (Gnode u : graph.getNodes()) {
+                if (u.getNombre() == nombre.charAt(0)) {
+                    add = false;
+                }
+            }
+            if (add) {
+                graph.setNodes(new Gnode(pn_grafo, evt.getX(), evt.getY(), nombre.charAt(0)));
+            } else {
+                JOptionPane.showMessageDialog(pn_grafo, "Nodo Duplicado!");
+            }
+            System.out.println("Se agrego nodo en: " + evt.getX() + " " + evt.getY());
 
-        //repinto el panel
-        updateGraphs();
+            //repinto el panel
+            updateGraphs();
+        }
     }//GEN-LAST:event_pn_grafoMouseClicked
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
@@ -464,10 +516,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-    public void Linea() {
-
-    }
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -497,6 +545,7 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+
             }
         });
     }
@@ -517,9 +566,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane8;
